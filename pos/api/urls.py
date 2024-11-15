@@ -1,15 +1,13 @@
-from django.urls import path, include
+from django.urls import path
 from api import views
-from rest_framework.urlpatterns import format_suffix_patterns
 from .views import (
-    TableRestoListApiView, TableRestoDetailApiView,
+    RegisterUserAPIView, LoginView
 )
 app_name='api'
 
 urlpatterns = [
-    #path('api/vl/login', LoginView.as_view()),
-    #path('api/vl/logiout', LogoutView.as_view()),
-    #path('api/vl/register', RegisterWaitressApi.as_view()),
-    path('api/table_resto', views.TableRestoListApiView.as_view()),
-    path('api/table_resto/<int:id>', views.TableRestoDetailApiView.as_view()),
+    path('api/register', RegisterUserAPIView.as_view()),
+    path('api/login', LoginView.as_view()),
+    path('api/menu_resto', views.MenuRestoView.as_view()),
+    path('api/menu-resto-filter', views.MenuRestoFilterApi.as_view())
 ]
